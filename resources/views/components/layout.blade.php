@@ -13,7 +13,7 @@
 <body class="min-h-screen flex flex-col bg-base-200 font-sans">
 <nav class="navbar bg-base-100">
     <div class="navbar-start">
-        <a href="/" class="btn btn-ghost text-xl">SQUAWK!</a>
+        <a href="/" class="btn btn-ghost text-xl">🐦‍⬛SQUAWK!</a>
     </div>
     <div class="navbar-end gap-2">
         <a href="#" class="btn btn-ghost btn-sm">Log In</a>
