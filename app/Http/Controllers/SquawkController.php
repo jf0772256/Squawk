@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Squawk;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class SquawkController extends Controller
 {
@@ -62,16 +64,24 @@ class SquawkController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Squawk $squawk) : RedirectResponse|Redirector
     {
-        //
+	    // Validate
+	    $validated = $request->validate([
+		    'message' => 'required|string|max:500',
+	    ]);
+		//update
+		$squawk->update($validated);
+	    //redirect
+		return redirect('/')->with('success', 'Squawk updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Squawk $squawk) : RedirectResponse|Redirector
     {
-        //
+        $squawk->delete();
+		return redirect('/')->with('success', 'Squawk deleted!');
     }
 }
