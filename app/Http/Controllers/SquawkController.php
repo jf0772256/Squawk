@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class SquawkController extends Controller
@@ -9,7 +11,7 @@ class SquawkController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() : Factory|View
     {
         $chirps = [
             [
