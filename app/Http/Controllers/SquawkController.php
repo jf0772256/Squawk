@@ -32,7 +32,15 @@ class SquawkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated  = $request->validate(
+			['message' => 'required|string|max:500'],
+	        [
+				'message.required' => 'Please enter a something to squawk!',
+		        'message.max' => 'Squawks cannot be longer than 500 characters.',
+	        ]
+        );
+		Squawk::create(['message' => $validated['message']]);
+		return redirect('/')->with('success', 'Squawk created successfully!');
     }
 
     /**
