@@ -13,6 +13,6 @@ Route::get('/', [SquawkController::class, 'index']);
 //Route::get('/squawks/{squawk}/edit', [SquawkController::class, 'edit']);
 
 // create a squawk
-Route::post('/squawk', [SquawkController::class, 'store']);
+Route::post('/squawks', [SquawkController::class, 'store']);
 //Route::put('/squawks/{squawk}', [SquawkController::class, 'update']);
 //Route::delete('/squawks/{squawk}', [SquawkController::class, 'destroy']);

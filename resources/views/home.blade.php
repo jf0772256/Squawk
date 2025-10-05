@@ -5,7 +5,7 @@
     <div class="max-w-2xl mx-auto">
         <h1 class="text-3xl font-bold underline mb-3">Latest Squawks!</h1>
 
-        <form action="/squawk" method="post">
+        <form action="/squawks" method="post">
             @csrf
             <div>
                 <textarea name="message" id="new-message" rows="4" maxlength="500" required placeholder="What's on your mind?" class="textarea textarea-bordered w-full resize-none @error('message') text-error @enderror" aria-description="Enter whats on your mind and submit it to publish your squawk">{{ old('message') }}</textarea>
