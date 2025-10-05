@@ -14,5 +14,7 @@ Route::get('/squawks/{squawk}/edit', [SquawkController::class, 'edit']);
 
 // create a squawk
 Route::post('/squawks', [SquawkController::class, 'store']);
-//Route::put('/squawks/{squawk}', [SquawkController::class, 'update']);
-//Route::delete('/squawks/{squawk}', [SquawkController::class, 'destroy']);
+// update database entry for squawk
+Route::put('/squawks/{squawk}', [SquawkController::class, 'update']);
+// delete database entry for squawk
+Route::delete('/squawks/{squawk}', [SquawkController::class, 'destroy']);
