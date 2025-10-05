@@ -3,13 +3,17 @@
         Welcome
     </x-slot:title>
     <div class="max-w-2xl mx-auto">
-        <div class="card bg-base-100 shadow mt-8">
-            <div class="card-body">
-                <div>
-                    <h1 class="text-3xl font-bold">Welcome to SQUAWK!</h1>
-                    <p class="mt-4 text-base-content/60">This is your brand new Laravel application. Time to make it sing (or Squawk)!</p>
+        <h1 class="text-3xl font-bold underline">SQUAWKS!</h1>
+        @foreach($chirps as $chirp)
+            <div class="card bg-base-100 shadow mt-8">
+                <div class="card-body">
+                    <div>
+                        <div class="font-semibold">{{ $chirp['author'] }}</div>
+                        <div class="mt-1">{{ $chirp['message'] }}</div>
+                        <div class="text-sm text-gray-500 mt-2">{{ $chirp['time'] }}</div>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
     </div>
 </x-layout>
