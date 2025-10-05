@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \Illuminate\Contracts\View\Factory;
-use \Illuminate\View\View;
 
 class SquawkController extends Controller
 {
-
-    public function index(): Factory|View
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
         $chirps = [
             [
@@ -28,24 +28,55 @@ class SquawkController extends Controller
                 'time' => '3 hours ago'
             ]
         ];
+
         return view('home', compact('chirps'));
     }
 
-    public function edit(): Factory|View
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        // shows edit form
-        return view('');
+        //
     }
 
-    public function create(): Factory|View
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        // shows create form
-        return view('');
+        //
     }
 
-    public function list(): Factory|View
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        // displays a list of all squawks
-        return view('');
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }
