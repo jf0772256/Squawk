@@ -18,12 +18,14 @@ Route::get('/squawks/{squawk}/edit', [SquawkController::class, 'edit']);
 Route::view('/register', 'auth.register')->middleware('guest')->name('register');
 Route::view('/login', 'auth.login')->middleware('guest')->name('login');
 
-// create a squawk
-Route::post('/squawks', [SquawkController::class, 'store']);
-// update database entry for squawk
-Route::put('/squawks/{squawk}', [SquawkController::class, 'update']);
-// delete database entry for squawk
-Route::delete('/squawks/{squawk}', [SquawkController::class, 'destroy']);
+Route::middleware(['auth'])->group(function () {
+    // create a squawk
+    Route::post('/squawks', [SquawkController::class, 'store']);
+    // update database entry for squawk
+    Route::put('/squawks/{squawk}', [SquawkController::class, 'update']);
+    // delete database entry for squawk
+    Route::delete('/squawks/{squawk}', [SquawkController::class, 'destroy']);
+});
 
 // create a new user in the database and log them in
 Route::post('/register', Register::class)->middleware('guest');

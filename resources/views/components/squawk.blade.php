@@ -35,14 +35,16 @@
                         @endif
                     </div>
 
-                    <div class="flex gap-1">
-                        <a href="/squawks/{{ $squawk->id }}/edit" class="btn btn-ghost btn-xs" aria-description="Edit this squawk">Edit</a>
-                        <form action="/squawks/{{ $squawk->id }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" role="button" onclick="return confirm('Are you sure you want to delete this squawk?')" class="btn btn-ghost btn-xs text-error" aria-description="Permanently deletes the current squawk">Delete</button>
-                        </form>
-                    </div>
+                    @auth
+                        <div class="flex gap-1">
+                            <a href="/squawks/{{ $squawk->id }}/edit" class="btn btn-ghost btn-xs" aria-description="Edit this squawk">Edit</a>
+                            <form action="/squawks/{{ $squawk->id }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" role="button" onclick="return confirm('Are you sure you want to delete this squawk?')" class="btn btn-ghost btn-xs text-error" aria-description="Permanently deletes the current squawk">Delete</button>
+                            </form>
+                        </div>
+                    @endauth
                 </div>
 
                 <p class="mt-1" aria-description="squawk message text">
