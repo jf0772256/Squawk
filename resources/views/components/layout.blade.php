@@ -16,8 +16,8 @@
         <a href="/" class="btn btn-ghost text-xl">🐦‍⬛SQUAWK!</a>
     </div>
     <div class="navbar-end gap-2">
-        <a href="#" class="btn btn-ghost btn-sm">Log In</a>
-        <a href="#" class="btn btn-primary btn-sm">Sign Up</a>
+        <a href="/login" class="btn btn-ghost btn-sm">Log In</a>
+        <a href="/register" class="btn btn-primary btn-sm">Sign Up</a>
     </div>
 </nav>
 
