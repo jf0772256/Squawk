@@ -20,6 +20,7 @@
                                    placeholder="John Doe"
                                    value="{{ old('name') }}"
                                    class="input input-bordered @error('name') input-error @enderror"
+                                   aria-description="Your name"
                                    required>
                             <span>Name</span>
                         </label>
@@ -36,6 +37,7 @@
                                    placeholder="[mail@example.com](<mailto:mail@example.com>)"
                                    value="{{ old('email') }}"
                                    class="input input-bordered @error('email') input-error @enderror"
+                                   aria-description="Your email address"
                                    required>
                             <span>Email</span>
                         </label>
@@ -51,6 +53,7 @@
                                    name="password"
                                    placeholder="••••••••"
                                    class="input input-bordered @error('password') input-error @enderror"
+                                   aria-description="Create your password used to log in"
                                    required>
                             <span>Password</span>
                         </label>
@@ -66,13 +69,14 @@
                                    name="password_confirmation"
                                    placeholder="••••••••"
                                    class="input input-bordered"
+                                   aria-description="Reenter your new password to confirm"
                                    required>
                             <span>Confirm Password</span>
                         </label>
 
                         <!-- Submit Button -->
                         <div class="form-control mt-8">
-                            <button type="submit" class="btn btn-primary btn-sm w-full">
+                            <button type="submit" role="button" class="btn btn-primary btn-sm w-full" aria-description="Submit to create your account">
                                 Register
                             </button>
                         </div>
@@ -81,7 +85,7 @@
                     <div class="divider">OR</div>
                     <p class="text-center text-sm">
                         Already have an account?
-                        <a href="/login" class="link link-primary">Sign in</a>
+                        <a href="/login" class="link link-primary" aria-label="Directs you to the log in page to log in with existing credentials">Sign in</a>
                     </p>
                 </div>
             </div>
