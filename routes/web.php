@@ -16,6 +16,7 @@ Route::get('/', [SquawkController::class, 'index']);
 Route::get('/squawks/{squawk}/edit', [SquawkController::class, 'edit']);
 // display the registration form only when the user is not authenticated
 Route::view('/register', 'auth.register')->middleware('guest')->name('register');
+Route::view('/login', 'auth.login')->middleware('guest')->name('login');
 
 // create a squawk
 Route::post('/squawks', [SquawkController::class, 'store']);
