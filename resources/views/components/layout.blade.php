@@ -16,8 +16,16 @@
         <a href="/" class="btn btn-ghost text-xl">🐦‍⬛SQUAWK!</a>
     </div>
     <div class="navbar-end gap-2">
-        <a href="/login" class="btn btn-ghost btn-sm">Log In</a>
-        <a href="/register" class="btn btn-primary btn-sm">Sign Up</a>
+        @auth
+            <span class="text-sm">{{ auth()->user()->name }}</span>
+            <form action="/logout" method="post" class="inline">
+                @csrf
+                <button aria-description="Log yourself out of the site" class="btn btn-ghost btn-sm" role="button">Log out</button>
+            </form>
+        @else
+            <a href="/login" class="btn btn-ghost btn-sm">Log In</a>
+            <a href="/register" class="btn btn-primary btn-sm">Sign Up</a>
+        @endauth
     </div>
 </nav>
 
