@@ -23,20 +23,26 @@
                 </div>
             @endif
 
-            <div class="min-w-0">
-                <div class="flex items-center gap-1">
-                    <span class="text-sm font-semibold" aria-label="squawkers name">{{ $squawk->user ? $squawk->user->name : 'Anonymous' }}</span>
-                    <span class="text-base-content/60" aria-hidden="true">·</span>
-                    <span class="text-sm text-base-content/60" aria-label="squawked at">{{ $squawk->created_at->diffForHumans() }}</span>
-                </div>
+            <div class="min-w-0 flex-1">
+                <div class="flex justify-between w-full">
+                    <div class="flex items-center gap-1">
+                        <span class="text-sm font-semibold" aria-label="squawkers name">{{ $squawk->user ? $squawk->user->name : 'Anonymous' }}</span>
+                        <span class="text-base-content/60" aria-hidden="true">·</span>
+                        <span class="text-sm text-base-content/60" aria-label="squawked at">{{ $squawk->created_at->diffForHumans() }}</span>
+                        @if ($squawk->updated_at->gt($squawk->created_at->addSeconds(5)))
+                            <span class="text-base-content/60" aria-hidden="true">·</span>
+                            <span class="text-sm text-base-content/60 italic" aria-label="Edited">Edited</span>
+                        @endif
+                    </div>
 
-                <div class="flex gap-1">
-                    <a href="/squawks/{{ $squawk->id }}/edit" class="btn btn-ghost btn-xs" aria-description="Edit this squawk">Edit</a>
-                    <form action="/squawks/{{ $squawk->id }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" role="button" onclick="return confirm('Are you sure you want to delete this squawk?')" class="btn btn-ghost btn-xs text-error" aria-description="Permanently deletes the current squawk">Delete</button>
-                    </form>
+                    <div class="flex gap-1">
+                        <a href="/squawks/{{ $squawk->id }}/edit" class="btn btn-ghost btn-xs" aria-description="Edit this squawk">Edit</a>
+                        <form action="/squawks/{{ $squawk->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" role="button" onclick="return confirm('Are you sure you want to delete this squawk?')" class="btn btn-ghost btn-xs text-error" aria-description="Permanently deletes the current squawk">Delete</button>
+                        </form>
+                    </div>
                 </div>
 
                 <p class="mt-1" aria-description="squawk message text">
