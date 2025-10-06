@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="lofi">
+<html lang="en" data-theme="hifi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+{{--    <link rel="stylesheet" href="css/postvitecss.css">--}}
 </head>
 <body class="min-h-screen flex flex-col bg-base-200 font-sans">
 <nav class="navbar bg-base-100">
