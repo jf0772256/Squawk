@@ -11,6 +11,9 @@ use App\Http\Controllers\SquawkController;
 Route::get('/', [SquawkController::class, 'index']);
 // load the squawk in to the ui to allow editing it
 Route::get('/squawks/{squawk}/edit', [SquawkController::class, 'edit']);
+Route::get('/register', function () {
+    return view('auth.register');
+});
 
 // create a squawk
 Route::post('/squawks', [SquawkController::class, 'store']);
