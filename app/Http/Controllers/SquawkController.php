@@ -41,7 +41,8 @@ class SquawkController extends Controller
 		        'message.max' => 'Squawks cannot be longer than 500 characters.',
 	        ]
         );
-		Squawk::create(['message' => $validated['message']]);
+		//Squawk::create(['message' => $validated['message']]);
+	    auth()->user()->squawks()->create($validated);
 		return redirect('/')->with('success', 'Squawk created successfully!');
     }
 
@@ -58,6 +59,7 @@ class SquawkController extends Controller
      */
     public function edit(Squawk $squawk) : Factory|View
     {
+	    $this->authorize('update', $squawk);
         return view('squawks.edit', compact('squawk'));
     }
 
@@ -66,6 +68,7 @@ class SquawkController extends Controller
      */
     public function update(Request $request, Squawk $squawk) : RedirectResponse|Redirector
     {
+	    $this->authorize('update', $squawk);
 	    // Validate
 	    $validated = $request->validate([
 		    'message' => 'required|string|max:500',
@@ -81,6 +84,7 @@ class SquawkController extends Controller
      */
     public function destroy(Squawk $squawk) : RedirectResponse|Redirector
     {
+	    $this->authorize('delete', $squawk);
         $squawk->delete();
 		return redirect('/')->with('success', 'Squawk deleted!');
     }
