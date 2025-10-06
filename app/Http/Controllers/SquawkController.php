@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Squawk;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class SquawkController extends Controller
 {
+	use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
@@ -32,7 +36,7 @@ class SquawkController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): Redirector|RedirectResponse
     {
         $validated  = $request->validate(
 			['message' => 'required|string|max:500'],
@@ -54,18 +58,20 @@ class SquawkController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+	/**
+	 * Show the form for editing the specified resource.
+	 * @throws AuthorizationException
+	 */
     public function edit(Squawk $squawk) : Factory|View
     {
 	    $this->authorize('update', $squawk);
         return view('squawks.edit', compact('squawk'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+	/**
+	 * Update the specified resource in storage.
+	 * @throws AuthorizationException
+	 */
     public function update(Request $request, Squawk $squawk) : RedirectResponse|Redirector
     {
 	    $this->authorize('update', $squawk);
@@ -79,9 +85,10 @@ class SquawkController extends Controller
 		return redirect('/')->with('success', 'Squawk updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+	/**
+	 * Remove the specified resource from storage.
+	 * @throws AuthorizationException
+	 */
     public function destroy(Squawk $squawk) : RedirectResponse|Redirector
     {
 	    $this->authorize('delete', $squawk);
