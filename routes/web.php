@@ -1,9 +1,9 @@
 <?php
 
-    use App\Http\Controllers\Auth\Logout;
-    use App\Http\Controllers\Auth\Register;
-    use App\Http\Controllers\Auth\Login;
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\Logout;
+use App\Http\Controllers\Auth\Register;
+use App\Http\Controllers\Auth\Login;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SquawkController;
 
 //Route::get('/', function () {
