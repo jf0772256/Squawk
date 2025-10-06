@@ -5,23 +5,21 @@
     <div class="max-w-2xl mx-auto">
         <h1 class="text-3xl font-bold underline mb-3">Latest Squawks!</h1>
 
-        @auth
-            <form action="/squawks" method="post">
-                @csrf
-                <div>
-                    <textarea name="message" id="new-message" rows="4" maxlength="500" required placeholder="What's on your mind?" class="textarea textarea-bordered w-full resize-none @error('message') text-error @enderror" aria-description="Enter whats on your mind and submit it to publish your squawk">{{ old('message') }}</textarea>
+        <form action="/squawks" method="post">
+            @csrf
+            <div>
+                <textarea name="message" id="new-message" rows="4" maxlength="500" required placeholder="What's on your mind?" class="textarea textarea-bordered w-full resize-none @error('message') text-error @enderror" aria-description="Enter whats on your mind and submit it to publish your squawk">{{ old('message') }}</textarea>
 
-                    @error('message')
-                        <div class="label">
-                            <span class="label-text-alt text-error">{{ $message }}</span>
-                        </div>
-                    @enderror
-                </div>
-                <div class="mt-4 flex items-center justify-end">
-                    <button type="submit" class="btn btn-primary btn-sm" role="button" aria-description="Submit your squawk">Squawk!</button>
-                </div>
-            </form>
-        @endauth
+                @error('message')
+                    <div class="label">
+                        <span class="label-text-alt text-error">{{ $message }}</span>
+                    </div>
+                @enderror
+            </div>
+            <div class="mt-4 flex items-center justify-end">
+                <button type="submit" class="btn btn-primary btn-sm" role="button" aria-description="Submit your squawk">Squawk!</button>
+            </div>
+        </form>
 
         @forelse($squawks as $squawk)
             <x-squawk :squawk="$squawk"></x-squawk>
